@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Temperature.dir/objects.a
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\Temperature.dir/objects.a @CMakeFiles\Temperature.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\Temperature.dir/objects.a -Wl,--no-whole-archive  -o Temperature.exe -Wl,--out-implib,libTemperature.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Temperature.dir\linklibs.rsp
