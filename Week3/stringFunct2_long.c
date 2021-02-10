@@ -8,7 +8,7 @@ int main()
     int index, indexOfLongest;
     int longestLength = 0;
     char pause;
-    
+
     for (index=0; index < SIZE; index ++) {
         printf("Enter string %d: ", index+1);
         gets(strings[index]);
@@ -21,7 +21,8 @@ for (index = 0; index < SIZE; index++) {
      } //end if
 }//end for
 
-printf("The longest string is %s with %d characters\n", 
+printf("The longest string is %s with %d characters\n",
             strings[indexOfLongest], longestLength);
 
-}                     
+printf("Alphabetically Smallest: %s", strings)
+}
