@@ -196,6 +196,33 @@ Question2_.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Week3.dir\build.make CMakeFiles/Week3.dir/Question2_.c.s
 .PHONY : Question2_.c.s
 
+countWords.obj: countWords.c.obj
+
+.PHONY : countWords.obj
+
+# target to build an object file
+countWords.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Week3.dir\build.make CMakeFiles/Week3.dir/countWords.c.obj
+.PHONY : countWords.c.obj
+
+countWords.i: countWords.c.i
+
+.PHONY : countWords.i
+
+# target to preprocess a source file
+countWords.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Week3.dir\build.make CMakeFiles/Week3.dir/countWords.c.i
+.PHONY : countWords.c.i
+
+countWords.s: countWords.c.s
+
+.PHONY : countWords.s
+
+# target to generate assembly for a file
+countWords.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Week3.dir\build.make CMakeFiles/Week3.dir/countWords.c.s
+.PHONY : countWords.c.s
+
 pointer.obj: pointer.c.obj
 
 .PHONY : pointer.obj
@@ -346,6 +373,9 @@ help:
 	@echo ... Question2_.obj
 	@echo ... Question2_.i
 	@echo ... Question2_.s
+	@echo ... countWords.obj
+	@echo ... countWords.i
+	@echo ... countWords.s
 	@echo ... pointer.obj
 	@echo ... pointer.i
 	@echo ... pointer.s

@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Week3.dir/2darray.c.obj"
   "CMakeFiles/Week3.dir/Question2_.c.obj"
+  "CMakeFiles/Week3.dir/countWords.c.obj"
   "CMakeFiles/Week3.dir/pointer.c.obj"
   "CMakeFiles/Week3.dir/pointerArray.c.obj"
   "CMakeFiles/Week3.dir/stringExamples.c.obj"

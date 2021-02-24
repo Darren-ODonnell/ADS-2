@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week4/Lab Questions/Email.c
+stdio.h
+-
+
+C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week4/Lab Questions/SwapNumbers.c
+stdio.h
+-
+
+C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week4/Lab Questions/cfiles.h
+SwapNumbers.c
+C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week4/Lab Questions/SwapNumbers.c
+Email.c
+C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week4/Lab Questions/Email.c
+
+C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week4/Lab Questions/main.c
+stdio.h
+-
+cfiles.h
+C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week4/Lab Questions/cfiles.h
+

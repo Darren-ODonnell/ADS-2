@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/2darray.c" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/cmake-build-debug/CMakeFiles/Week3.dir/2darray.c.obj"
   "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/Question2 .c" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/cmake-build-debug/CMakeFiles/Week3.dir/Question2_.c.obj"
+  "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/countWords.c" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/cmake-build-debug/CMakeFiles/Week3.dir/countWords.c.obj"
   "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/pointer.c" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/cmake-build-debug/CMakeFiles/Week3.dir/pointer.c.obj"
   "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/pointerArray.c" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/cmake-build-debug/CMakeFiles/Week3.dir/pointerArray.c.obj"
   "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/stringExamples.c" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week3/cmake-build-debug/CMakeFiles/Week3.dir/stringExamples.c.obj"
