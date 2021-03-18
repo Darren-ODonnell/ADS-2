@@ -1,0 +1,3 @@
+C:/Users/liam/Desktop/CLionProjects/Darren01/cmake-build-debug-mingw/CMakeFiles/Darren01.dir
+C:/Users/liam/Desktop/CLionProjects/Darren01/cmake-build-debug-mingw/CMakeFiles/edit_cache.dir
+C:/Users/liam/Desktop/CLionProjects/Darren01/cmake-build-debug-mingw/CMakeFiles/rebuild_cache.dir

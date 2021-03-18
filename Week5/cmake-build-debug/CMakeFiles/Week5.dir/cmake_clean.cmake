@@ -10,8 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Week5.dir/structureArrayPoints.cpp.obj"
   "Week5.exe"
   "Week5.exe.manifest"
+  "Week5.lib"
   "Week5.pdb"
-  "libWeek5.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

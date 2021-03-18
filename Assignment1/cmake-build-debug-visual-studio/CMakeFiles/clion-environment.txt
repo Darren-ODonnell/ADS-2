@@ -1,0 +1,4 @@
+ToolSet: 16.0 (local)@C:\Program Files (x86)\Microsoft Visual Studio\2019\Community
+Options: msvc.arch=x86, msvc.platform=onecore, version=8.1
+
+Options:-DCMAKE_C_COMPILER=C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools/makehm.exe

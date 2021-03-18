@@ -9,7 +9,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week5/linkedListNums.c" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week5/cmake-build-debug/CMakeFiles/Week5.dir/linkedListNums.c.obj"
   "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week5/main.c" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week5/cmake-build-debug/CMakeFiles/Week5.dir/main.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
@@ -22,7 +22,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week5/orders.cpp" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week5/cmake-build-debug/CMakeFiles/Week5.dir/orders.cpp.obj"
   "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week5/structureArrayPoints.cpp" "C:/Users/Darren/Desktop/College USB/2nd Year/Semester 2/ADS2/Week5/cmake-build-debug/CMakeFiles/Week5.dir/structureArrayPoints.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

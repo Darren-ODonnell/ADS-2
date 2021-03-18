@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/liam/Desktop/CLionProjects/Darren01/LinkedList.c
+header.h
+C:/Users/liam/Desktop/CLionProjects/Darren01/header.h
+
+C:/Users/liam/Desktop/CLionProjects/Darren01/header.h
+stdio.h
+-
+stdlib.h
+-
+accctrl.h
+-
+stdbool.h
+-
+

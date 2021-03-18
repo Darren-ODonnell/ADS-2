@@ -18,15 +18,21 @@
 #define nullptr NULL
 
 //Stucture template for data part of the linked list
- struct data {
- 	int num;
- };
+ typedef struct data {
+     char id[8];
+     char title[50];
+     char author[30];
+     int publicationYear;
+     bool available;
+     char customerName[30];
+     int loanCount;
+ }BOOK;
 
 //Stucture template for one node
-struct LinearNode {
+typedef struct LinearNode {
      struct data *element;
 	struct LinearNode *next;
-};
+}NODE;
 
 
 // Function prototypes
