@@ -48,6 +48,18 @@ void addToEnd(BOOK * aBook) {
 
 }
 
+
+bool idInList(char * in){
+    NODE *current = list;
+    while( current != NULL){
+        if( strcmp(current->element->id, in) == 0) {
+            return false;
+        }
+        current = current->next;
+    }
+    return true;
+}
+
 /**
  * Check if ID is already in list before attempting to add a new book.
  * @param id
@@ -73,19 +85,13 @@ bool isIdInList(char *id) {
 void bookCopy(struct data *aBook, struct data *newBook) {
 
     strcpy_s(aBook->customerName, 30, newBook->customerName);
-    viewBookContents(aBook);
     strcpy_s(aBook->author, 30, newBook->author);
-    viewBookContents(aBook);
     strcpy_s(aBook->title, 50, newBook->title);
-    viewBookContents(aBook);
     strcpy_s(aBook->id, 10, newBook->id);
-    viewBookContents(aBook);
     aBook->cost = newBook->cost;
     aBook->available =  newBook->available;
     aBook->loanCount =  newBook->loanCount;
     aBook->publicationYear =  newBook->publicationYear;
-
-    viewBookContents(aBook);
 
 }
 
@@ -430,18 +436,24 @@ void viewBookInNode(NODE * node){
  * @param book
  */
 void viewBookContents(BOOK * book){
+    char availability[6];
+    if(book->available){
+        strcpy(availability, "True");
+    }else{
+        strcpy(availability, "False");
+    }
     printf("\n\nNode ID:%s"
            "\nNode Title:%s"
            "\nNode Author:%s"
            "\nNode publicationYear:%d"
-           "\nNode Available:%d"
+           "\nNode Available:%s"
            "\nNode customerName:%s"
            "\nNode loanCount:%d\n"
             ,book->id
             ,book->title
             ,book->author
             ,book->publicationYear
-            ,book->available
+            ,availability
             ,book->customerName
             ,book->loanCount);
 }
@@ -471,7 +483,7 @@ NODE * getByID(char * id){
 
     NODE *node = list;
     node->next = list->next;
-    printf("node: %s next: %s", node->element->id, node->next->element->id);
+
 
     while(node->next != NULL){
         if(strcmp(node->element->id, id) == 0){//If the two IDs are the same

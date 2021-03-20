@@ -40,7 +40,7 @@ bool isMidDash( const char * );
 
 void inputID(char *);
 
-bool idInList(char *);
+
 
 /**************MAIN FUNCTION*******************/
 int main() {
@@ -92,15 +92,11 @@ void inputID(char * input){
         printf("Enter a formatted String XXXX-XXXX : ");
         scanf_s("%s", input, 10);
 
-        printf("%s\n", input);
-
         left = isLeftFour(input);
         right = isRightFour(input);
         mid = isMidDash(input);
 
         valid = left && right && mid ;
-
-        printf("Status %d %d %d\n",left, right, mid);
 
     }
 }
@@ -116,36 +112,12 @@ void inputID(char * input){
     char input[10];
     char *in = input;
 
-    NODE currentNode;
-    NODE *current = &currentNode;
-    bool inLibrary = true;
-    int i = 0;
-
     inputID(in);
 
-    current =list;
     while(!idInList(in)){
-       printf("\n\n**This ID already exists in Library**\n\n");
+       printf("\n\nThis ID already exists in Library\n\n");
        inputID(in);
     }
-;
-
-//    current = get(i, bookCount);
-    // While list is not empty, current has not reached the end of the list, the id is already in library, and while index is less that book count
-//    while(!isEmpty() || current->next != NULL || inLibrary || i < bookCount){
-//
-//        if(strcmp(current->element->id, in) == 0){ // 0 means both strings are the same
-//            printf("\n\n**This ID already exists in Library**\n\n");
-//            inputID(in);
-//            inLibrary = false;
-//            i=0;// Reset index into LinkedList
-//        }
-//
-//        i++; // used by get function
-//        current = get(i, bookCount);
-//    }
-
-
 
     strcpy_s(aBook->id, 10, in);
 
@@ -177,16 +149,7 @@ void inputID(char * input){
     bookCount++;
 
 }
-bool idInList(char * in){
-     NODE *current = list;
-     while( current != NULL){
-         if( strcmp(current->element->id, in) == 0) {
-             return false;
-         }
-         current = current->next;
-     }
-     return true;
- }
+
 
 void startupProgram() {
 //  initialise nodes
@@ -256,18 +219,75 @@ void displayMenu(){
  */
  void takeBook() { // menu opt 1
     //find book matching input
+    char input[10];
+    char *in = input;
 
-    //set book.available = false
+    printf("Enter the ID of the book you wish to borrow: \n");
 
-    //increment loan count
+
+    bool bookBorrowed = false;
+    NODE * node;
+    while(!bookBorrowed) {
+        inputID(in);
+        while(idInList(in)) {
+            printf("Book ID not found - Please Re-Enter: \n\n");
+            inputID(in);
+        }
+
+        node = getByID(in);
+        if(!node->element->available) {
+            printf("Book is unavailable - Please Try another Book\n\n");
+        } else {
+            // Book available and ID exists
+            node->element->available = false;
+            //increment loan count
+            node->element->loanCount ++;
+            //update customerName assigned to book
+            printf("Input your name: \n");
+            scanf_s("%s", node->element->customerName, 30);
+            bookBorrowed = true;
+        }
+
+    }
+
 
 }
 
 /**
  * Return book to Library
  */
- void returnBook() { // menu opt 3
+ void returnBook() {// menu opt 3
     // return by ID
+
+    char input[10];
+    char *in = input;
+
+    printf("Enter the ID of the book you wish to return: \n");
+
+
+    bool bookBorrowed = true;
+    NODE * node;
+    while(bookBorrowed) {
+        inputID(in);
+        while(idInList(in)) {
+            printf("\n\nBook ID not found - Please Re-Enter \n\n");
+            inputID(in);
+        }
+
+        node = getByID(in);
+        if(node->element->available) {
+            printf("\n\nBook is currently not on loan - Please Re-Enter\n\n");
+        } else {
+            printf("\n\nThank you for returning the book\n\n");
+            // Book availability back to true
+            node->element->available = true;
+            //update customerName assigned to book back to empty
+            strcpy_s(node->element->customerName, 30, "");
+            bookBorrowed = false;
+        }
+
+    }
+
 }
 
 /**
@@ -334,26 +354,26 @@ void saveAndExit() { // menu opt 9 or default
  */
 void addStartNodes() {
 
-    addNode( "1234-0001","Harry Potter and the Philosopher's Stone ","J.K. Rowling",2001,1,"John",20,15);
-    addNode( "1234-0002","Diary of a Wimpy Kid: Old School","Jeff Kinney",2015,1,"Fred",30,10);
-    addNode( "1234-0003","The BFG","Roald Dahl",1982,1,"Mary",40,10);
-    addNode( "1234-0004","Harry Potter and the Chamber of Secrets","J.K. Rowling",2002,0,"",40,15);
-    addNode( "1234-0005","Harry Potter and the prisoner of Azkaban","J.K. Rowling",2004,0,"",20,15);
-    addNode( "1234-0006","Diary of a Wimpy Kid: Double Down","Jeff Kinney",2015,0,"",35,10);
-    addNode( "1234-0007","Awful Auntie","David Walliams",2014,0,"",20,10);
-    addNode( "1234-0008","Diary of a Wimpy Kid: Hard Luck","Jeff Kinney",2015,0,"",35,10);
-    addNode( "1234-0009","Wonder","R.J. Palacio",2012,0,"",20,15);
-    addNode( "1234-0010","James and the Giant Peach","Roald Dahl",1996,0,"",40,15);
-    addNode( "1234-0011","Ratburger","David Walliams",2012,1,"Joan",20,10);
-    addNode( "1234-0012","Matilda","Roald Dahl",1996,1,"Oisin",15,10);
-    addNode( "1234-0013","The World's Worst Children","David Walliams",2016,1,"Darren",10,15);
-    addNode( "1234-0014","Gangsta Granny","David Walliams",2011,1,"Marion",10,15);
-    addNode( "1234-0015","Fantastic Mr Fox","Roald Dahl",1970,0,"",35,10);
-    addNode( "1234-0016","Demon Dentist","David Walliams",2013,0,"",5,10);
-    addNode( "1234-0017","Diary of a Wimpy Kid: The Third Wheel","Jeff Kinney",2015,0,"",25,10);
-    addNode( "1234-0018","Grandpa's Great Escape","David Walliams",2015,1,"Auveen",25,15);
-    addNode( "1234-0019","Diary of a Wimpy Kid: Cabin Fever","Jeff Kinney",2015,1,"Eileen",35,20);
-    addNode( "1234-0020","Under the Hawthorn Tree","Marita Conlon-McKenna",2015,1,"Liam",5,10);
+    addNode( "1234-0001","Harry Potter and the Philosopher's Stone ","J.K. Rowling",2001,0,"John",20,15);
+    addNode( "1234-0002","Diary of a Wimpy Kid: Old School","Jeff Kinney",2015,0,"Fred",30,10);
+    addNode( "1234-0003","The BFG","Roald Dahl",1982,0,"Mary",40,10);
+    addNode( "1234-0004","Harry Potter and the Chamber of Secrets","J.K. Rowling",2002,1,"",40,15);
+    addNode( "1234-0005","Harry Potter and the prisoner of Azkaban","J.K. Rowling",2004,1,"",20,15);
+    addNode( "1234-0006","Diary of a Wimpy Kid: Double Down","Jeff Kinney",2015,1,"",35,10);
+    addNode( "1234-0007","Awful Auntie","David Walliams",2014,1,"",20,10);
+    addNode( "1234-0008","Diary of a Wimpy Kid: Hard Luck","Jeff Kinney",2015,1,"",35,10);
+    addNode( "1234-0009","Wonder","R.J. Palacio",2012,1,"",20,15);
+    addNode( "1234-0010","James and the Giant Peach","Roald Dahl",1996,1,"",40,15);
+    addNode( "1234-0011","Ratburger","David Walliams",2012,0,"Joan",20,10);
+    addNode( "1234-0012","Matilda","Roald Dahl",1996,0,"Oisin",15,10);
+    addNode( "1234-0013","The World's Worst Children","David Walliams",2016,0,"Darren",10,15);
+    addNode( "1234-0014","Gangsta Granny","David Walliams",2011,0,"Marion",10,15);
+    addNode( "1234-0015","Fantastic Mr Fox","Roald Dahl",1970,1,"",35,10);
+    addNode( "1234-0016","Demon Dentist","David Walliams",2013,1,"",5,10);
+    addNode( "1234-0017","Diary of a Wimpy Kid: The Third Wheel","Jeff Kinney",2015,1,"",25,10);
+    addNode( "1234-0018","Grandpa's Great Escape","David Walliams",2015,0,"Auveen",25,15);
+    addNode( "1234-0019","Diary of a Wimpy Kid: Cabin Fever","Jeff Kinney",2015,0,"Eileen",35,20);
+    addNode( "1234-0020","Under the Hawthorn Tree","Marita Conlon-McKenna",2015,0,"Liam",5,10);
 //
 }
 

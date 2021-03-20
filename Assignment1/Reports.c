@@ -1,7 +1,9 @@
 //
 // Created by Darren on 12/03/2021.
 //
-
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
 #ifndef DARREN01_HEADER_H
 #define DARREN01_HEADER_H
 #include "header.h"
@@ -51,8 +53,15 @@ void displayBooksLinkedList() {
         BOOK * book = current->element;
         char  * id = book->id ;
         char * title = book->title;
+
+        char availability[6];
+        if(book->available){
+            strcpy(availability, "True");
+        }else{
+            strcpy(availability, "False");
+        }
         printf("%d - ",i++);
-        printf("BookID: %s -- Name: %s\n", id, title);
+        printf("BookID: %s -- Avail: %s -- Name: %s\n", id, availability, title);
         current = current->next;
     }
 }

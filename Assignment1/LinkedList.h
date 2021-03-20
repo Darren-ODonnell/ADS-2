@@ -28,3 +28,4 @@ void viewBookInNode(NODE *);
 void viewBookContents(BOOK *);
 void bookCopy(struct data *, struct data *);
 bool isIdInList(char *);
+bool idInList(char *);
