@@ -13,9 +13,6 @@
 #endif
 #ifndef DARREN01_HEADER_H
 #define DARREN01_HEADER_H
-
-
-
 #include "header.h"
 #include "LinkedList.h"
 #endif //DARREN01_HEADER_H
@@ -51,6 +48,28 @@ void addToEnd(BOOK * aBook) {
 
 }
 
+/**
+ * Check if ID is already in list before attempting to add a new book.
+ * @param id
+ * @return
+ */
+bool isIdInList(char *id) {
+    NODE * current;
+
+    current = list;
+    while (current != NULL) {
+        if(strcmp(current->element->id, id) == 0)
+            return true;
+        current = current->next;
+    }
+    return false;
+}
+
+/**
+ * Using to copy the contents of a book just entered to the libary linkedlist.
+ * @param aBook
+ * @param newBook
+ */
 void bookCopy(struct data *aBook, struct data *newBook) {
 
     strcpy_s(aBook->customerName, 30, newBook->customerName);
@@ -242,6 +261,14 @@ void bookCopy(struct data *aBook, struct data *newBook) {
 //
 //    return false;
 //}
+
+/**
+ * Get a node at an index in the library
+ * Bookcount is used to keep track of how many books in libary
+ * @param index
+ * @param bookCount
+ * @return
+ */
 NODE * get(int index, int bookCount){
 
     if(index > bookCount) {
@@ -324,25 +351,31 @@ NODE * get(int index, int bookCount){
 //    }//end else
 //}// end deleteNode
 //
-//void linearSearch(char id[])
-//{
-//    struct LinearNode *current = list;
-//    while (current != NULL && (strcmp(current->element.id,id)!=0)) {
-//        current=current->next;
-//    }
 //
-//    if (current == NULL)
-//        printf("%s does not exist in the list\n", id);
-//    else
-//        printf("%s has been found in the list\n", current->element.id);
-//}
-//
-//bool isEmpty() {
-//    if (list == nullptr)
-//        return true;
-//    else
-//        return false;
-//}
+bool isEmpty() {
+    if (list == NULL)
+        return true;
+    else
+        return false;
+}
+/**
+ * Delete node based on its ID number
+ * @param id
+ * @param bookCount
+ */
+
+bool linearSearch(char id[])
+{
+    struct LinearNode *current = list;
+    while (current != NULL && (strcmp(current->element->id,id)!=0)) {
+        current=current->next;
+    }
+
+    if (current == NULL)
+        return false; //not in list
+    else
+        return true; //in list
+}
 
 void deleteWithID(char * id, int * bookCount) {
     NODE *before = malloc(sizeof(NODE));
@@ -384,10 +417,18 @@ void deleteWithID(char * id, int * bookCount) {
     }
 }
 
+/**
+ * View node - by viewing the element in node
+ * @param node
+ */
 void viewBookInNode(NODE * node){
     viewBookContents(node->element);
 }
 
+/**
+ * View the contents of the book within the node
+ * @param book
+ */
 void viewBookContents(BOOK * book){
     printf("\n\nNode ID:%s"
            "\nNode Title:%s"
@@ -405,6 +446,10 @@ void viewBookContents(BOOK * book){
             ,book->loanCount);
 }
 
+/**
+ * View book based on its ID
+ * @param id
+ */
 void viewWithID(char * id){
     NODE *node = getByID(id);
 
@@ -417,6 +462,11 @@ void viewWithID(char * id){
 
 }
 
+/**
+ * Return book based on its ID
+ * @param id
+ * @return
+ */
 NODE * getByID(char * id){
 
     NODE *node = list;

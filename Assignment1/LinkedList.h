@@ -8,10 +8,9 @@
 #endif //DARREN01_LINKEDLIST_H
 
 void addNodes();  //adding nodes to front of the list
-void deleteNode(char[]); // delete a specific node
 void viewAllNodes();
 bool isEmpty();
-void linearSearch(char[]);
+bool linearSearch(char *);
 
 
 void addNewList(BOOK * );
@@ -28,3 +27,4 @@ void deleteWithID(char *, int *);
 void viewBookInNode(NODE *);
 void viewBookContents(BOOK *);
 void bookCopy(struct data *, struct data *);
+bool isIdInList(char *);

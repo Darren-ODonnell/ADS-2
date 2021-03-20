@@ -18,7 +18,6 @@ int bookCount = 0;
 void addNode(char [], char[], char[], int, bool, char[], int, int);
 void startupProgram();
 void addStartNodes();
-
 void displayMenu();
 
 void takeBook();            // menu 1
@@ -41,6 +40,8 @@ bool isMidDash( const char * );
 
 void inputID(char *);
 
+bool idInList(char *);
+
 /**************MAIN FUNCTION*******************/
 int main() {
     // load books and initialise bookCount.
@@ -51,6 +52,13 @@ int main() {
 
 }
 
+/**
+ * The three functions are used to validate the ID field
+ * isLeft() checks the first 4 are numbers
+ * isRight() checks the last 4 are numbers
+ * isMidDash() check the middle char is a dash character '-'
+ * @return
+ */
 bool isLeftFour( char * in) {
     bool valid = true;
     for (int i=0;i<4;i++)
@@ -71,11 +79,14 @@ bool isMidDash(const char * in) {
     return (in[4]=='-') ? true : false;
 }
 
+/**
+ * Input Book ID
+ * @param input
+ */
 void inputID(char * input){
 
     bool valid = false;
     bool left, right, mid = false;
-
 
     while (!valid) {
         printf("Enter a formatted String XXXX-XXXX : ");
@@ -94,14 +105,47 @@ void inputID(char * input){
     }
 }
 
-void addBook() { // menu opt 2
+/**
+ * Add Book to library
+ */
+ void addBook() { // menu opt 2
     //Create Book
     BOOK newBook;
     BOOK *aBook = &newBook;
 
     char input[10];
-    char * in = input;
+    char *in = input;
+
+    NODE currentNode;
+    NODE *current = &currentNode;
+    bool inLibrary = true;
+    int i = 0;
+
     inputID(in);
+
+    current =list;
+    while(!idInList(in)){
+       printf("\n\n**This ID already exists in Library**\n\n");
+       inputID(in);
+    }
+;
+
+//    current = get(i, bookCount);
+    // While list is not empty, current has not reached the end of the list, the id is already in library, and while index is less that book count
+//    while(!isEmpty() || current->next != NULL || inLibrary || i < bookCount){
+//
+//        if(strcmp(current->element->id, in) == 0){ // 0 means both strings are the same
+//            printf("\n\n**This ID already exists in Library**\n\n");
+//            inputID(in);
+//            inLibrary = false;
+//            i=0;// Reset index into LinkedList
+//        }
+//
+//        i++; // used by get function
+//        current = get(i, bookCount);
+//    }
+
+
 
     strcpy_s(aBook->id, 10, in);
 
@@ -133,6 +177,16 @@ void addBook() { // menu opt 2
     bookCount++;
 
 }
+bool idInList(char * in){
+     NODE *current = list;
+     while( current != NULL){
+         if( strcmp(current->element->id, in) == 0) {
+             return false;
+         }
+         current = current->next;
+     }
+     return true;
+ }
 
 void startupProgram() {
 //  initialise nodes
@@ -197,7 +251,10 @@ void displayMenu(){
     }
 }
 
-void takeBook() { // menu opt 1
+/**
+ * Take book out on loan
+ */
+ void takeBook() { // menu opt 1
     //find book matching input
 
     //set book.available = false
@@ -206,11 +263,17 @@ void takeBook() { // menu opt 1
 
 }
 
-void returnBook() { // menu opt 3
+/**
+ * Return book to Library
+ */
+ void returnBook() { // menu opt 3
     // return by ID
 }
 
-void deleteBook() { // menu opt 4
+/**
+ * Delete book from library
+ */
+ void deleteBook() { // menu opt 4
 //     delete by ID
     char input[10];
     char * in = input;
@@ -219,38 +282,56 @@ void deleteBook() { // menu opt 4
     deleteWithID(in, &bookCount);
 }
 
-void displayAll() { // menu opt 5
+/**
+ * Display All books in library
+ */
+ void displayAll() { // menu opt 5
     displayBooksLinkedList(); // in Reports.c
 }
 
-void viewBook() { // menu opt 6
+/**
+ * View a single book detaILS IN LIBRARY
+ */
+ void viewBook() { // menu opt 6
      // By ID
      char input[10];
      char * in = input;
-     inputID(in);
 
+     inputID(in);
      viewWithID(in);
 
 }
 
-void mostLeastPopular() { // menu opt 7 - all in Reports.c
+/**
+ * Report the Most popular and Least popular book based on borrowings
+ */
+ void mostLeastPopular() { // menu opt 7 - all in Reports.c
     reportHeader(); // Header block two lines above and below text
     viewPopular(); // single line of report output
     viewUnpopular(); // single line of report output
     reportEnding(); // line of '='
 }
 
-void personalFunction() { // menu opt 8 - all in Reports.c
+/**
+ * Create a report of all the activities in the library
+ */
+ void personalFunction() { // menu opt 8 - all in Reports.c
     reportHeader(); // Header block two lines above and below text
     reportCostOfBooksSummary(); // 3 lines of report data
     reportEnding(); // line of '='
 }
 
+/**
+ * Save books to file and exit
+ */
 void saveAndExit() { // menu opt 9 or default
 //    saveToFileLinkedList(list); // in LinkedList.c
     exit(0);
 }
 
+/**
+ *
+ */
 void addStartNodes() {
 
     addNode( "1234-0001","Harry Potter and the Philosopher's Stone ","J.K. Rowling",2001,1,"John",20,15);
