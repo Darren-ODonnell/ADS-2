@@ -216,6 +216,11 @@ void returnBook() { // menu opt 3
 
 void deleteBook() { // menu opt 4
     // delete by ID
+    char input[10];
+    char * in = input;
+    inputID(in);
+
+    deleteWithID(input);
 }
 
 void displayAll() { // menu opt 5

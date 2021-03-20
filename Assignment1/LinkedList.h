@@ -1,5 +1,5 @@
 //
-// Created by liam on 12/03/2021.
+// Created by Darren on 12/03/2021.
 //
 
 #ifndef DARREN01_LINKEDLIST_H
@@ -24,3 +24,4 @@ bool duplicate();
 NODE * get(int);
 NODE * getByID(char[]);
 void viewWithID(char[]);
+void deleteWithID(char[]);

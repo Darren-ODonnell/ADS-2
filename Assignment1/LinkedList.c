@@ -316,6 +316,16 @@ void addToEnd(BOOK * aBook) {
 //        return false;
 //}
 
+void deleteWithID(char * id) {
+    NODE *node = getByID(id);
+
+    if (node != NULL) {
+        //Delete
+    }else{
+        printf("No element found with the ID input")
+    }
+}
+
 void viewWithID(char * id){
     NODE *node = getByID(id);
 
