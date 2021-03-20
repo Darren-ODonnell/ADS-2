@@ -21,7 +21,10 @@ void addToEnd(BOOK * );
 //Methods that i added
 void addNodesToEnd();
 bool duplicate();
-NODE * get(int);
-NODE * getByID(char[]);
-void viewWithID(char[]);
-void deleteWithID(char[]);
+NODE * get(int, int);
+NODE * getByID(char *);
+void viewWithID(char *);
+void deleteWithID(char *, int *);
+void viewBookInNode(NODE *);
+void viewBookContents(BOOK *);
+void bookCopy(struct data *, struct data *);

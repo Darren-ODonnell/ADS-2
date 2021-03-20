@@ -13,6 +13,9 @@
 #endif
 #ifndef DARREN01_HEADER_H
 #define DARREN01_HEADER_H
+
+
+
 #include "header.h"
 #include "LinkedList.h"
 #endif //DARREN01_HEADER_H
@@ -22,8 +25,11 @@
  * @param aBook
  */
 void addNewList(BOOK * aBook) {
-    list->element = aBook;
-    last->element = aBook;
+
+    bookCopy(list->element,aBook);
+    bookCopy(last->element,aBook);
+
+
     last->next = NULL;
 
 }
@@ -34,11 +40,33 @@ void addNewList(BOOK * aBook) {
  */
 void addToEnd(BOOK * aBook) {
     last->next = (NODE *)malloc(sizeof(NODE ));
+
+    last->next->element = (BOOK *)malloc(sizeof(BOOK));
+//    last->next->element = aBook;
     last = last->next;
-    last->element = (BOOK *)malloc(sizeof(BOOK));
-    last->element = aBook;
+
+    bookCopy(last->element,aBook);
 
     last->next = NULL;
+
+}
+
+void bookCopy(struct data *aBook, struct data *newBook) {
+
+    strcpy_s(aBook->customerName, 30, newBook->customerName);
+    viewBookContents(aBook);
+    strcpy_s(aBook->author, 30, newBook->author);
+    viewBookContents(aBook);
+    strcpy_s(aBook->title, 50, newBook->title);
+    viewBookContents(aBook);
+    strcpy_s(aBook->id, 10, newBook->id);
+    viewBookContents(aBook);
+    aBook->cost = newBook->cost;
+    aBook->available =  newBook->available;
+    aBook->loanCount =  newBook->loanCount;
+    aBook->publicationYear =  newBook->publicationYear;
+
+    viewBookContents(aBook);
 
 }
 
@@ -214,22 +242,22 @@ void addToEnd(BOOK * aBook) {
 //
 //    return false;
 //}
-//struct LinearNode * get(int index){
-//
-//    if(index > nodeCount) {
-//        printf("Index to get is out of range");
-//    } else {
-//        if (list != nullptr) {
-//            NODE *node;
-//            node = list;
-//            for (int i = 1; i < index; i++) {
-//                node = node->next;
-//            }
-//            return node;
-//        }
-//    }
-//    return NULL;
-//}
+NODE * get(int index, int bookCount){
+
+    if(index > bookCount) {
+        printf("Index to get is out of range");
+    } else {
+        if (list != NULL) {
+            NODE *node;
+            node = list;
+            for (int i = 1; i < index; i++) {
+                node = node->next;
+            }
+            return node;
+        }
+    }
+    return NULL;
+}
 
 //void viewAllNodes() {
 //
@@ -316,14 +344,65 @@ void addToEnd(BOOK * aBook) {
 //        return false;
 //}
 
-void deleteWithID(char * id) {
-    NODE *node = getByID(id);
+void deleteWithID(char * id, int * bookCount) {
+    NODE *before = malloc(sizeof(NODE));
+    NODE *current = malloc(sizeof(NODE));
 
-    if (node != NULL) {
-        //Delete
-    }else{
-        printf("No element found with the ID input")
+    //Placeholder for pointer to allow space to be freed up.
+    NODE *spaceToClear;
+
+    printf("id to delete %s BookCount %d\n",id, *bookCount);
+
+    for(int i = 0; i < *bookCount; i++) {
+        current = get(i,*bookCount);
+        if (i > 0) { // before does not exist for first node
+            before = get(i - 1, *bookCount);
+        }
+
+        //if current is equal to id, delete id
+
+        if ((strcmp(current->element->id, id))== 0) {
+
+            if(current == list){ // first in list
+                spaceToClear = list;
+                list = list->next;
+
+            }else if (current == last) { //last in list
+                spaceToClear = last;
+                last = before;
+                last->next = NULL;
+
+            }else{ //not first or last
+                before->next = current->next;
+                spaceToClear = current;
+
+            }
+            free(spaceToClear);
+            bookCount--;
+            return; // no need to continue in for loop if node has been deleted
+        }
     }
+}
+
+void viewBookInNode(NODE * node){
+    viewBookContents(node->element);
+}
+
+void viewBookContents(BOOK * book){
+    printf("\n\nNode ID:%s"
+           "\nNode Title:%s"
+           "\nNode Author:%s"
+           "\nNode publicationYear:%d"
+           "\nNode Available:%d"
+           "\nNode customerName:%s"
+           "\nNode loanCount:%d\n"
+            ,book->id
+            ,book->title
+            ,book->author
+            ,book->publicationYear
+            ,book->available
+            ,book->customerName
+            ,book->loanCount);
 }
 
 void viewWithID(char * id){
@@ -331,28 +410,14 @@ void viewWithID(char * id){
 
     if(node != NULL){
         printf("Inside ViewWithID %s \n", id);
-
-        printf("\n\nNode ID:%s"
-               "\nNode Title:%s"
-               "\nNode Author:%s"
-               "\nNode publicationYear:%d"
-               "\nNode Available:%d"
-               "\nNode customerName:%s"
-               "\nNode loanCount:%d\n"
-                ,node->element->id
-                ,node->element->title
-                ,node->element->author
-                ,node->element->publicationYear
-                ,node->element->available
-                ,node->element->customerName
-                ,node->element->loanCount);
+        viewBookInNode(node);
     }else{
         printf("There are no books with ID: %s \n", id);
     }
 
 }
 
-struct LinearNode * getByID(char *id){
+NODE * getByID(char * id){
 
     NODE *node = list;
     node->next = list->next;

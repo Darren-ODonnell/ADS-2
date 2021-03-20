@@ -6,9 +6,9 @@
 #include "Reports.h"
 #endif //DARREN01_HEADER_H
 
-int nodeCount = 0; // keep track of how many nodes in list
 char bookFile[10];
 
+int bookCount = 0;
 
 #ifdef _MSC_VER
 #define _CRT_SECURE_NO_WARNINGS
@@ -34,8 +34,6 @@ void saveAndExit();         // menu 9
 // Global LinkedList variables
 NODE * list;
 NODE * last;
-
-int bookCount = 0;
 
 bool isLeftFour( char * );
 bool isRightFour( char * );
@@ -109,32 +107,30 @@ void addBook() { // menu opt 2
 
     printf("Input the title of the book: ");
     scanf_s("%s", aBook->title, 50);
+    viewBookContents(aBook);
 
     printf("Input the Author of the book: ");
     scanf_s("%s", aBook->author,30);
 
     printf("Input the Publication Year of the book: ");
     scanf_s("%d", &aBook->publicationYear);
+    viewBookContents(aBook);
 
     printf("Input Your Name: ");
     scanf_s("%s", aBook->customerName,30);
+    viewBookContents(aBook);
 
     printf("Input Cost of Book: ");
     scanf_s("%d", &aBook->cost);
+    viewBookContents(aBook);
 
     aBook->available = true;
 
     aBook->loanCount = 0;
 
-    //LIST.addNodeToEnd(aBook);
-
-    //Memory Allocation
-
-    //set last.next = inputBook
-
-    //set last = inputBook
-
-    //increment count
+    viewBookContents(aBook);
+    addToEnd(aBook);
+    bookCount++;
 
 }
 
@@ -215,12 +211,12 @@ void returnBook() { // menu opt 3
 }
 
 void deleteBook() { // menu opt 4
-    // delete by ID
+//     delete by ID
     char input[10];
     char * in = input;
     inputID(in);
 
-    deleteWithID(input);
+    deleteWithID(in, &bookCount);
 }
 
 void displayAll() { // menu opt 5
@@ -233,7 +229,7 @@ void viewBook() { // menu opt 6
      char * in = input;
      inputID(in);
 
-     viewWithID(input);
+     viewWithID(in);
 
 }
 
