@@ -99,61 +99,19 @@ CMakeFiles\Darren01.dir\FileHandling.c.s: cmake_force
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\Darren01.dir\FileHandling.c.s /c "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\FileHandling.c"
 <<
 
-CMakeFiles\Darren01.dir\Reports.c.obj: CMakeFiles\Darren01.dir\flags.make
-CMakeFiles\Darren01.dir\Reports.c.obj: ..\Reports.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Darren01.dir/Reports.c.obj"
-	C:\PROGRA~2\MICROS~2\2019\COMMUN~1\VC\Tools\MSVC\1428~1.299\bin\Hostx86\x86\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\Darren01.dir\Reports.c.obj /FdCMakeFiles\Darren01.dir\ /FS -c "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\Reports.c"
-<<
-
-CMakeFiles\Darren01.dir\Reports.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Darren01.dir/Reports.c.i"
-	C:\PROGRA~2\MICROS~2\2019\COMMUN~1\VC\Tools\MSVC\1428~1.299\bin\Hostx86\x86\cl.exe > CMakeFiles\Darren01.dir\Reports.c.i @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\Reports.c"
-<<
-
-CMakeFiles\Darren01.dir\Reports.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Darren01.dir/Reports.c.s"
-	C:\PROGRA~2\MICROS~2\2019\COMMUN~1\VC\Tools\MSVC\1428~1.299\bin\Hostx86\x86\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\Darren01.dir\Reports.c.s /c "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\Reports.c"
-<<
-
-CMakeFiles\Darren01.dir\LinkedList.c.obj: CMakeFiles\Darren01.dir\flags.make
-CMakeFiles\Darren01.dir\LinkedList.c.obj: ..\LinkedList.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Darren01.dir/LinkedList.c.obj"
-	C:\PROGRA~2\MICROS~2\2019\COMMUN~1\VC\Tools\MSVC\1428~1.299\bin\Hostx86\x86\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\Darren01.dir\LinkedList.c.obj /FdCMakeFiles\Darren01.dir\ /FS -c "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\LinkedList.c"
-<<
-
-CMakeFiles\Darren01.dir\LinkedList.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Darren01.dir/LinkedList.c.i"
-	C:\PROGRA~2\MICROS~2\2019\COMMUN~1\VC\Tools\MSVC\1428~1.299\bin\Hostx86\x86\cl.exe > CMakeFiles\Darren01.dir\LinkedList.c.i @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\LinkedList.c"
-<<
-
-CMakeFiles\Darren01.dir\LinkedList.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Darren01.dir/LinkedList.c.s"
-	C:\PROGRA~2\MICROS~2\2019\COMMUN~1\VC\Tools\MSVC\1428~1.299\bin\Hostx86\x86\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\Darren01.dir\LinkedList.c.s /c "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\LinkedList.c"
-<<
-
 # Object files for target Darren01
 Darren01_OBJECTS = \
 "CMakeFiles\Darren01.dir\main.c.obj" \
-"CMakeFiles\Darren01.dir\FileHandling.c.obj" \
-"CMakeFiles\Darren01.dir\Reports.c.obj" \
-"CMakeFiles\Darren01.dir\LinkedList.c.obj"
+"CMakeFiles\Darren01.dir\FileHandling.c.obj"
 
 # External object files for target Darren01
 Darren01_EXTERNAL_OBJECTS =
 
 Darren01.exe: CMakeFiles\Darren01.dir\main.c.obj
 Darren01.exe: CMakeFiles\Darren01.dir\FileHandling.c.obj
-Darren01.exe: CMakeFiles\Darren01.dir\Reports.c.obj
-Darren01.exe: CMakeFiles\Darren01.dir\LinkedList.c.obj
 Darren01.exe: CMakeFiles\Darren01.dir\build.make
 Darren01.exe: CMakeFiles\Darren01.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Darren01.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Darren01.exe"
 	"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\Darren01.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~2\2019\COMMUN~1\VC\Tools\MSVC\1428~1.299\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\Darren01.dir\objects1.rsp @<<
  /out:Darren01.exe /implib:Darren01.lib /pdb:"C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\cmake-build-debug\Darren01.pdb" /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<

@@ -26,7 +26,7 @@ void viewPopular() {
         }
         current = current->next;
     }
-    printf("Most Borrowed Book  : %s\n",most);
+    printf("%35s %s\n","Most Borrowed Book : ",most);
 }
 
 void viewUnpopular() {
@@ -42,7 +42,7 @@ void viewUnpopular() {
         }
         current = current->next;
     }
-    printf("Least Borrowed Book : %s\n\n",least);
+    printf("%35s %s\n","Least Borrowed Book : ",least);
 }
 
 void displayBooksLinkedList() {
@@ -139,7 +139,7 @@ void countBooksOnLoan() {
             booksOnLoan++;
         current = current->next;
     }
-    printf("Books on Loan from Library: %d\n",booksOnLoan);
+    printf("%35s %d\n","Books on Loan from Library : ",booksOnLoan);
 
 }
 
@@ -152,5 +152,5 @@ void countBooksAvailable() {
             booksAvailable++;
         current = current->next;
     }
-    printf("Books available in the Library: %d\n",booksAvailable);
+    printf("%35s %d\n","Books available in the Library : ",booksAvailable);
 }

@@ -30,4 +30,3 @@ typedef struct LinearNode {
 NODE *list;
 NODE *last;
 
-//int bookCount = 0;

@@ -3,11 +3,14 @@
 //
 
 #include "header.h"
+#include "LinkedList.h"
 
 
 #ifdef _MSC_VER
 #define _CRT_SECURE_NO_WARNINGS
 #endif
+
+extern int bookCount;
 /** =================================FILE HANDLING =============================================== */
 void saveToFileLinkedList() {
 
@@ -15,15 +18,12 @@ void saveToFileLinkedList() {
     NODE * current ;
     current = list;
     errno_t err;
+    int count=0;
 
-    printf("Saving books to file...%s\n","books.dat");
+    if ((err = fopen_s(&fp, "books.dat", "wb")) == 0) {
 
-    if ((err = fopen_s(&fp, "books.dat", "wb")) != 0) {
-        printf("File opened - books.dat\n");
-        int count = 0;
         while (current != NULL) {
-            BOOK * book = current->element;
-            fwrite(&book, sizeof(BOOK), 1, fp);
+            fwrite(current->element, sizeof(BOOK), 1, fp);
             current = current->next;
             count++;
         }
@@ -35,38 +35,32 @@ void saveToFileLinkedList() {
     }
 }
 
-int getFromFileLinkedList() {
-    int count = 0;
+void getFromFileLinkedList() {
     FILE *fp;
     errno_t err;
-    list = last = NULL;
 
-    BOOK * book;
+    BOOK * bookPtr = (BOOK *)malloc(sizeof(BOOK));
+    bookCount = 0;
+    err = fopen_s(&fp, "books.dat", "rb");
 
-    if ((err = fopen_s(&fp, "books.dat", "rb")) != 0)
-        printf("Unable to open file - books.dat\n");
-    else {
-        printf("Retrieving books from file...%s\n", "books.dat");
+    if (err != 0) {
+        printf("cannot open file books.dat: %d\n", err);
+    } else {
+//        printf("Retrieving books from file...%s %d %d\n", "books.dat", sizeof(BOOK), sizeof(NODE)); /** Debug only **/
 
-        while ((fread(&book, sizeof(BOOK), 1, fp)) != 0) {
-            if (list == NULL) { // empty list
-                list->element = book;
-                last = list;
-                last->next = NULL;
-                // list = last = node;
-            } else {
-                NODE * node = malloc(sizeof(*node));
-                node->element = book;
-                node->next = NULL;
-
+        while(fread(bookPtr, sizeof(BOOK), 1, fp)!=0) {
+            if (bookCount == 0) { // mMust be first book if list is null
+                addNewList(bookPtr);
+            } else { // subsequent books
+                addToEnd(bookPtr);
             }
-            printf("Book Count : %d %s\n", count, book->title);
+            bookCount++;
+            //printf("Book Count : %d %s\n", bookCount, bookPtr->title);
 
-            last->next = NULL;
-            count++;
         }
-        printf("Books retrieved = %d\n", count);
+        printf("Books retrieved = %d\n\n", bookCount);
         fclose(fp);
     }
-    return count;
+
 }
+

@@ -17,6 +17,5 @@
  * @param books
  *********************************************/
 
-
 void saveToFileLinkedList();
-int getFromFileLinkedList();
+void getFromFileLinkedList();

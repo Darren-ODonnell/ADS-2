@@ -1,7 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Darren01.dir/FileHandling.c.obj"
-  "CMakeFiles/Darren01.dir/LinkedList.c.obj"
-  "CMakeFiles/Darren01.dir/Reports.c.obj"
   "CMakeFiles/Darren01.dir/main.c.obj"
   "Darren01.exe"
   "Darren01.exe.manifest"

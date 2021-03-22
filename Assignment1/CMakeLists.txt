@@ -2,5 +2,5 @@
 project(Darren01 C)
 
 set(CMAKE_C_STANDARD 99)
-
-add_executable(Darren01 main.c  FileHandling.c FileHandling.h Reports.c Reports.h header.h LinkedList.c  LinkedList.h)
+# FileHandling.c FileHandling.h Reports.c Reports.h header.h LinkedList.c  LinkedList.h
+add_executable(Darren02 main.c FileHandling.c FileHandling.h Reports.c Reports.h header.h LinkedList.c  LinkedList.h)

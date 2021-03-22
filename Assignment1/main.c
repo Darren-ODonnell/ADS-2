@@ -7,8 +7,8 @@
 #endif //DARREN01_HEADER_H
 
 char bookFile[10];
-
 int bookCount = 0;
+
 
 #ifdef _MSC_VER
 #define _CRT_SECURE_NO_WARNINGS
@@ -17,7 +17,7 @@ int bookCount = 0;
 
 void addNode(char [], char[], char[], int, bool, char[], int, int);
 void startupProgram();
-void addStartNodes();
+void addStartNodes();//For debugging
 void displayMenu();
 
 void takeBook();            // menu 1
@@ -30,15 +30,16 @@ void mostLeastPopular();    // menu 7
 void personalFunction();    // menu 8
 void saveAndExit();         // menu 9
 
-// Global LinkedList variables
-NODE * list;
-NODE * last;
-
 bool isLeftFour( char * );
 bool isRightFour( char * );
 bool isMidDash( const char * );
 
 void inputID(char *);
+
+// Global LinkedList variables
+NODE * list;
+NODE * last;
+
 
 
 
@@ -47,6 +48,8 @@ int main() {
     // load books and initialise bookCount.
 
     startupProgram();
+
+    //displayBooksLinkedList(); /** Debug only **/
 
     displayMenu(); // show Menu
 
@@ -91,13 +94,13 @@ void inputID(char * input){
     while (!valid) {
         printf("Enter a formatted String XXXX-XXXX : ");
         scanf_s("%s", input, 10);
+        if(strlen(input) >=9) {
+            left = isLeftFour(input);
+            right = isRightFour(input);
+            mid = isMidDash(input);
 
-        left = isLeftFour(input);
-        right = isRightFour(input);
-        mid = isMidDash(input);
-
-        valid = left && right && mid ;
-
+            valid = left && right && mid;
+        }
     }
 }
 
@@ -123,43 +126,34 @@ void inputID(char * input){
 
     printf("Input the title of the book: ");
     scanf_s("%s", aBook->title, 50);
-    viewBookContents(aBook);
 
     printf("Input the Author of the book: ");
     scanf_s("%s", aBook->author,30);
 
     printf("Input the Publication Year of the book: ");
     scanf_s("%d", &aBook->publicationYear);
-    viewBookContents(aBook);
 
-    printf("Input Your Name: ");
-    scanf_s("%s", aBook->customerName,30);
-    viewBookContents(aBook);
+    strcpy_s(aBook->customerName, 30, "");
 
     printf("Input Cost of Book: ");
     scanf_s("%d", &aBook->cost);
-    viewBookContents(aBook);
 
     aBook->available = true;
 
     aBook->loanCount = 0;
 
-    viewBookContents(aBook);
     addToEnd(aBook);
     bookCount++;
 
 }
 
-
 void startupProgram() {
 //  initialise nodes
-    list = last     = (NODE *) malloc(sizeof(NODE));
-    list->element   = (BOOK *) malloc(sizeof(BOOK));
-    list->next = NULL;
 
-    addStartNodes(); // add 10 nodes
-//    saveToFileLinkedList(); // in FileHandling.c
-//    bookCount = getFromFileLinkedList(); in FileHandling.c
+    //addStartNodes(); // add 20 nodes
+   // saveToFileLinkedList(bookCount); // in FileHandling.c
+    //getFileData();
+    getFromFileLinkedList( );// in FileHandling.c
 }
 
 /**
@@ -299,7 +293,7 @@ void displayMenu(){
     char * in = input;
     inputID(in);
 
-    deleteWithID(in, &bookCount);
+    deleteWithID(in);
 }
 
 /**
@@ -345,13 +339,14 @@ void displayMenu(){
  * Save books to file and exit
  */
 void saveAndExit() { // menu opt 9 or default
-//    saveToFileLinkedList(list); // in LinkedList.c
+    saveToFileLinkedList(list); // in LinkedList.c
     exit(0);
 }
 
 /**
  *
  */
+//For debugging
 void addStartNodes() {
 
     addNode( "1234-0001","Harry Potter and the Philosopher's Stone ","J.K. Rowling",2001,0,"John",20,15);
@@ -374,7 +369,6 @@ void addStartNodes() {
     addNode( "1234-0018","Grandpa's Great Escape","David Walliams",2015,0,"Auveen",25,15);
     addNode( "1234-0019","Diary of a Wimpy Kid: Cabin Fever","Jeff Kinney",2015,0,"Eileen",35,20);
     addNode( "1234-0020","Under the Hawthorn Tree","Marita Conlon-McKenna",2015,0,"Liam",5,10);
-//
 }
 
 void addNode( char id[], char title[], char author[], int year, bool available, char borrower[], int loanCount, int cost) {

@@ -57,7 +57,7 @@ CMAKE_BINARY_DIR = "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles\Darren01.dir\all
+all: CMakeFiles\Darren02.dir\all
 
 .PHONY : all
 
@@ -67,36 +67,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles\Darren01.dir\clean
+clean: CMakeFiles\Darren02.dir\clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Darren01.dir
+# Target rules for target CMakeFiles/Darren02.dir
 
 # All Build rule for target.
-CMakeFiles\Darren01.dir\all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Darren01.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Darren01.dir\depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Darren01.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Darren01.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\cmake-build-debug\CMakeFiles" --progress-num=1,2,3,4,5 "Built target Darren01"
-.PHONY : CMakeFiles\Darren01.dir\all
+CMakeFiles\Darren02.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Darren02.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Darren02.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Darren02.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Darren02.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\cmake-build-debug\CMakeFiles" --progress-num=1,2,3,4,5 "Built target Darren02"
+.PHONY : CMakeFiles\Darren02.dir\all
 
 # Build rule for subdir invocation for target.
-CMakeFiles\Darren01.dir\rule: cmake_check_build_system
+CMakeFiles\Darren02.dir\rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\cmake-build-debug\CMakeFiles" 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\Darren01.dir\all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\Darren02.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Darren\Desktop\College USB\2nd Year\Semester 2\ADS2\Assignment1\cmake-build-debug\CMakeFiles" 0
-.PHONY : CMakeFiles\Darren01.dir\rule
+.PHONY : CMakeFiles\Darren02.dir\rule
 
 # Convenience name for target.
-Darren01: CMakeFiles\Darren01.dir\rule
+Darren02: CMakeFiles\Darren02.dir\rule
 
-.PHONY : Darren01
+.PHONY : Darren02
 
 # clean rule for target.
-CMakeFiles\Darren01.dir\clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Darren01.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Darren01.dir\clean
-.PHONY : CMakeFiles\Darren01.dir\clean
+CMakeFiles\Darren02.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Darren02.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Darren02.dir\clean
+.PHONY : CMakeFiles\Darren02.dir\clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
