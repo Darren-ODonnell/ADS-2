@@ -44,7 +44,7 @@ void getFromFileLinkedList() {
     err = fopen_s(&fp, "books.dat", "rb");
 
     if (err != 0) {
-        printf("cannot open file books.dat: %d\n", err);
+        printf("No books in file books.dat, please add books: \n");
     } else {
 //        printf("Retrieving books from file...%s %d %d\n", "books.dat", sizeof(BOOK), sizeof(NODE)); /** Debug only **/
 
@@ -58,7 +58,7 @@ void getFromFileLinkedList() {
             //printf("Book Count : %d %s\n", bookCount, bookPtr->title);
 
         }
-        printf("Books retrieved = %d\n\n", bookCount);
+        printf("LinkedList Populated with books retrieved from books.dat, Book Count = %d\n\n", bookCount);
         fclose(fp);
     }
 

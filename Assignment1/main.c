@@ -6,14 +6,8 @@
 #include "Reports.h"
 #endif //DARREN01_HEADER_H
 
-char bookFile[10];
+// initialise book count
 int bookCount = 0;
-
-
-#ifdef _MSC_VER
-#define _CRT_SECURE_NO_WARNINGS
-
-#endif
 
 void addNode(char [], char[], char[], int, bool, char[], int, int);
 void startupProgram();
@@ -35,17 +29,15 @@ bool isRightFour( char * );
 bool isMidDash( const char * );
 
 void inputID(char *);
+void printError();
 
 // Global LinkedList variables
-NODE * list;
-NODE * last;
-
-
-
+//NODE * list;
+//NODE * last;
 
 /**************MAIN FUNCTION*******************/
 int main() {
-    // load books and initialise bookCount.
+    // load books
 
     startupProgram();
 
@@ -117,32 +109,40 @@ void inputID(char * input){
 
     inputID(in);
 
-    while(!idInList(in)){
+    while(!idNotInList(in)){
        printf("\n\nThis ID already exists in Library\n\n");
        inputID(in);
     }
 
     strcpy_s(aBook->id, 10, in);
 
-    printf("Input the title of the book: ");
+    printf("\nInput the title of the book: ");
     scanf_s("%s", aBook->title, 50);
 
-    printf("Input the Author of the book: ");
+    printf("\nInput the Author of the book: ");
     scanf_s("%s", aBook->author,30);
 
-    printf("Input the Publication Year of the book: ");
+    printf("\nInput the Publication Year of the book: ");
     scanf_s("%d", &aBook->publicationYear);
+
+    while(aBook->publicationYear <= 2008) {
+        printf("\nPublication Year must be greater than 2008, please input again: ");
+        scanf_s("%d", &aBook->publicationYear);
+    }
 
     strcpy_s(aBook->customerName, 30, "");
 
-    printf("Input Cost of Book: ");
+    printf("\nInput Cost of Book: \n");
     scanf_s("%d", &aBook->cost);
 
     aBook->available = true;
-
     aBook->loanCount = 0;
 
-    addToEnd(aBook);
+    if(bookCount == 0){
+        addNewList(aBook); // Adds book into first position in linkedlist
+    }else {
+        addToEnd(aBook);
+    }
     bookCount++;
 
 }
@@ -201,11 +201,17 @@ void displayMenu(){
                 personalFunction();
                 break;
             case 9:
-            default :
                 saveAndExit();
-
+                break;
+            default:
+                printError();
+                break;
         }
     }
+}
+
+void printError() {
+    printf("\nError: Number out of range, please input a number from 1-9\n\n");
 }
 
 /**
@@ -223,12 +229,12 @@ void displayMenu(){
     NODE * node;
     while(!bookBorrowed) {
         inputID(in);
-        while(idInList(in)) {
+        while(idNotInList(in)) {
             printf("Book ID not found - Please Re-Enter: \n\n");
             inputID(in);
         }
 
-        node = getByID(in);
+        node = getByID(in); // in LinkedList
         if(!node->element->available) {
             printf("Book is unavailable - Please Try another Book\n\n");
         } else {
@@ -256,6 +262,11 @@ void displayMenu(){
     char input[10];
     char *in = input;
 
+    char firstName[30];
+    char *name = firstName;
+
+    printf("Enter your name, which is registered to the book");
+    scanf_s("%s", name, 30);
     printf("Enter the ID of the book you wish to return: \n");
 
 
@@ -263,21 +274,26 @@ void displayMenu(){
     NODE * node;
     while(bookBorrowed) {
         inputID(in);
-        while(idInList(in)) {
+        while(idNotInList(in)) {
             printf("\n\nBook ID not found - Please Re-Enter \n\n");
             inputID(in);
         }
 
-        node = getByID(in);
+        node = getByID(in); // in LinkedList
         if(node->element->available) {
             printf("\n\nBook is currently not on loan - Please Re-Enter\n\n");
         } else {
-            printf("\n\nThank you for returning the book\n\n");
-            // Book availability back to true
-            node->element->available = true;
-            //update customerName assigned to book back to empty
-            strcpy_s(node->element->customerName, 30, "");
-            bookBorrowed = false;
+            if(strcmp(node->element->customerName, name) == 0) {
+                printf("\n\nThank you for returning the book\n\n");
+                // Book availability back to true
+                node->element->available = true;
+                //update customerName assigned to book back to empty
+                strcpy_s(node->element->customerName, 30, "");
+                bookBorrowed = false;
+            }else{
+                printf("\nCustomer Name does not match customer who borrowed this book\n\n");
+                break; // if name does not match borrowers name, return to menu
+            }
         }
 
     }
@@ -290,10 +306,14 @@ void displayMenu(){
  void deleteBook() { // menu opt 4
 //     delete by ID
     char input[10];
-    char * in = input;
+    char *in = input;
     inputID(in);
 
-    deleteWithID(in);
+    if (getByID(in)->element->publicationYear < 2011) {
+        deleteWithID(in); // in LinkedList
+    }else{
+        printf("\n\nThis book cannot be deleted as it is less than 10 years old\n");
+    }
 }
 
 /**
@@ -312,7 +332,7 @@ void displayMenu(){
      char * in = input;
 
      inputID(in);
-     viewWithID(in);
+     viewWithID(in); // in LinkedList
 
 }
 
@@ -349,21 +369,21 @@ void saveAndExit() { // menu opt 9 or default
 //For debugging
 void addStartNodes() {
 
-    addNode( "1234-0001","Harry Potter and the Philosopher's Stone ","J.K. Rowling",2001,0,"John",20,15);
+    //addNode( "1234-0001","Harry Potter and the Philosopher's Stone ","J.K. Rowling",2001,0,"John",20,15);
     addNode( "1234-0002","Diary of a Wimpy Kid: Old School","Jeff Kinney",2015,0,"Fred",30,10);
-    addNode( "1234-0003","The BFG","Roald Dahl",1982,0,"Mary",40,10);
-    addNode( "1234-0004","Harry Potter and the Chamber of Secrets","J.K. Rowling",2002,1,"",40,15);
-    addNode( "1234-0005","Harry Potter and the prisoner of Azkaban","J.K. Rowling",2004,1,"",20,15);
+    // addNode( "1234-0003","The BFG","Roald Dahl",1982,0,"Mary",40,10);
+    //addNode( "1234-0004","Harry Potter and the Chamber of Secrets","J.K. Rowling",2002,1,"",40,15);
+    //addNode( "1234-0005","Harry Potter and the prisoner of Azkaban","J.K. Rowling",2004,1,"",20,15);
     addNode( "1234-0006","Diary of a Wimpy Kid: Double Down","Jeff Kinney",2015,1,"",35,10);
     addNode( "1234-0007","Awful Auntie","David Walliams",2014,1,"",20,10);
     addNode( "1234-0008","Diary of a Wimpy Kid: Hard Luck","Jeff Kinney",2015,1,"",35,10);
     addNode( "1234-0009","Wonder","R.J. Palacio",2012,1,"",20,15);
-    addNode( "1234-0010","James and the Giant Peach","Roald Dahl",1996,1,"",40,15);
+    //addNode( "1234-0010","James and the Giant Peach","Roald Dahl",1996,1,"",40,15);
     addNode( "1234-0011","Ratburger","David Walliams",2012,0,"Joan",20,10);
-    addNode( "1234-0012","Matilda","Roald Dahl",1996,0,"Oisin",15,10);
+    //addNode( "1234-0012","Matilda","Roald Dahl",1996,0,"Oisin",15,10);
     addNode( "1234-0013","The World's Worst Children","David Walliams",2016,0,"Darren",10,15);
     addNode( "1234-0014","Gangsta Granny","David Walliams",2011,0,"Marion",10,15);
-    addNode( "1234-0015","Fantastic Mr Fox","Roald Dahl",1970,1,"",35,10);
+    //addNode( "1234-0015","Fantastic Mr Fox","Roald Dahl",1970,1,"",35,10);
     addNode( "1234-0016","Demon Dentist","David Walliams",2013,1,"",5,10);
     addNode( "1234-0017","Diary of a Wimpy Kid: The Third Wheel","Jeff Kinney",2015,1,"",25,10);
     addNode( "1234-0018","Grandpa's Great Escape","David Walliams",2015,0,"Auveen",25,15);

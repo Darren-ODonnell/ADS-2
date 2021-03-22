@@ -36,13 +36,11 @@ void addNewList(BOOK * aBook) {
  * @param aBook
  */
 void addToEnd(BOOK * aBook) {
-
     last->next = malloc(sizeof( NODE ));
     last->next->element = malloc(sizeof( BOOK ));
-
     last = last->next;
-    bookCopy(last->element,aBook);
 
+    bookCopy(last->element,aBook);
     last->next = NULL;
 }
 
@@ -51,7 +49,7 @@ void addToEnd(BOOK * aBook) {
 * @param id
 * @return
 */
-bool idInList(char * in){
+bool idNotInList(char * in){
     NODE *current = list;
     while( current != NULL){
         if( strcmp(current->element->id, in) == 0) {
@@ -93,8 +91,7 @@ NODE * get(int index){
         printf("Index to get is out of range");
     } else {
         if (list != NULL) {
-            NODE *node;
-            node = list;
+            NODE *node = list;
             for (int i = 1; i < index; i++) {
                 node = node->next;
             }
@@ -126,6 +123,9 @@ void deleteWithID(char * id) {
         //if current is equal to id, delete id
 
         if ((strcmp(current->element->id, id))== 0) {
+            // case current is at top of list
+            // case current ius at end of list
+            // all other cases
 
             if(current == list){ // first in list
                 spaceToClear = list;
@@ -135,9 +135,7 @@ void deleteWithID(char * id) {
 
                 printf("id to delete as last: %s\n", id);
                 spaceToClear = last;
-
                 before->next = NULL;
-
                 last = before;
 
             }else{ //not first or last
@@ -215,14 +213,12 @@ NODE * getByID(char * id){
     NODE *node = list;
     node->next = list->next;
 
-
     while(node != NULL){
         if(strcmp(node->element->id, id) == 0){//If the two IDs are the same
             return node;
         }else {
             node = node->next;
         }
-
     }
     return NULL;
 }

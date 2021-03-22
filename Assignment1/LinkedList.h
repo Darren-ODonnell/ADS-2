@@ -15,4 +15,4 @@ void deleteWithID(char *);
 void viewBookInNode(NODE *);
 void viewBookContents(BOOK *);
 void bookCopy(struct data *, struct data *);
-bool idInList(char *);
+bool idNotInList(char *);

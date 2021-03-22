@@ -135,7 +135,7 @@ void countBooksOnLoan() {
     NODE * current = list;
 
     while(current != NULL) {
-        if (current->element->available)
+        if (!current->element->available)
             booksOnLoan++;
         current = current->next;
     }
@@ -148,7 +148,7 @@ void countBooksAvailable() {
     NODE * current = list;
 
     while(current != NULL) {
-        if (!current->element->available)
+        if (current->element->available)
             booksAvailable++;
         current = current->next;
     }
